@@ -1,0 +1,3 @@
+The following is the notes and code while following along this Udemy course.
+
+https://wgu.udemy.com/course/data-structures-algorithms-python/learn/lecture/26849240#content
