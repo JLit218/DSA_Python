@@ -14,3 +14,5 @@ def print_items(n):
     
 print_items(10)
 #Outputs 0-9
+
+#############O(n) is proportional

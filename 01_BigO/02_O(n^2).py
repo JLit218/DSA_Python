@@ -8,3 +8,5 @@ def print_items(n):
       #n * n * n aka n^3 (regardless how many exponents this will be simplified to O(n^2)
 
 print_items(10)
+
+############O(n^2) is a loop within a loop
