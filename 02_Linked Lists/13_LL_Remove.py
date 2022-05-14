@@ -74,6 +74,7 @@ class LinkedList:
             self.tail = None
         return temp
 
+    # Get method #
     def get(self, index):
       # tests if index value is valid
         if index < 0 or index >= self.length:
@@ -84,10 +85,50 @@ class LinkedList:
             temp = temp.next
         return temp
 
+    # Set method #
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
 
-my_linked_list = LinkedList(0)
-my_linked_list.append_list(1)
-my_linked_list.append_list(2)
+    # Insert Method #
+    def insert_value(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append_list(value)
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
+    # Remove Method #
+    def remove_value(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        prev = self.get(index - 1)
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
+
+my_linked_list = LinkedList(11)
 my_linked_list.append_list(3)
+my_linked_list.append_list(23)
+my_linked_list.append_list(7)
 
-print(my_linked_list.get(2))
+print(my_linked_list.remove_value(2), '\n')
+
+my_linked_list.print_list()

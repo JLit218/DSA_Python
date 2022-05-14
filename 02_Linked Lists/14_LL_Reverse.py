@@ -74,6 +74,7 @@ class LinkedList:
             self.tail = None
         return temp
 
+    # Get method #
     def get(self, index):
       # tests if index value is valid
         if index < 0 or index >= self.length:
@@ -84,10 +85,64 @@ class LinkedList:
             temp = temp.next
         return temp
 
+    # Set method #
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
 
-my_linked_list = LinkedList(0)
-my_linked_list.append_list(1)
+    # Insert Method #
+    def insert_value(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append_list(value)
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
+    # Remove Method #
+    def remove_value(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        prev = self.get(index - 1)
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
+    # Reverse Method #
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+        # for loop MUST be in this order to not break the link. See Lecture 32 on Udemy
+
+
+my_linked_list = LinkedList(1)
 my_linked_list.append_list(2)
 my_linked_list.append_list(3)
+my_linked_list.append_list(4)
 
-print(my_linked_list.get(2))
+my_linked_list.reverse()
+
+my_linked_list.print_list()

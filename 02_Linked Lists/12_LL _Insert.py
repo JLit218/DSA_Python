@@ -74,6 +74,7 @@ class LinkedList:
             self.tail = None
         return temp
 
+    # Get method #
     def get(self, index):
       # tests if index value is valid
         if index < 0 or index >= self.length:
@@ -84,10 +85,33 @@ class LinkedList:
             temp = temp.next
         return temp
 
+    # Set method #
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+    # Insert Method #
+    def insert_value(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append_list(value)
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
 
 my_linked_list = LinkedList(0)
-my_linked_list.append_list(1)
 my_linked_list.append_list(2)
-my_linked_list.append_list(3)
 
-print(my_linked_list.get(2))
+my_linked_list.insert_value(1, 1)
+
+my_linked_list.print_list()
