@@ -135,7 +135,7 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
-        # for loop MUST be in this order to not break the link. See Lecture 32 on Udemy
+        # for loop MUST be in this order to not break the link#
 
 
 my_linked_list = LinkedList(1)
