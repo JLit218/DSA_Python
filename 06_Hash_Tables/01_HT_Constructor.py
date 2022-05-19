@@ -7,7 +7,7 @@ class HashTable:
         my_hash = 0
         for letter in key:
             #the below calculation finds the index of the hash#
-            my_has = (my_hash + ord(letter) * 23) % len(self.data_map)
+            my_hash = (my_hash + ord(letter) * 23) % len(self.data_map)
         return my_hash
 
     def print_table(self):
